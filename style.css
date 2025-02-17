@@ -1,0 +1,101 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+    background-image: url("/randomnumproject/background-image.jpg");    
+    background-repeat: round;
+    backdrop-filter: blur(1px);
+
+
+}
+
+/* 게임 컨테이너 */
+.game-container {
+    background: white;
+    width: 1000px;
+    height: 650px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 랜덤 숫자 표시 (정답) */
+.random-number {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff5722;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+}
+
+
+/* 입력 박스 스타일 */
+.input-box {
+    width: 20%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼을 중앙 정렬 */
+    gap: 10px; /* 버튼 사이 간격 */
+    margin-top: 20px; /* 버튼을 아래로 내림 */
+}
+/* 버튼 스타일 */
+.game-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.game-button:hover {
+    background: #0056b3;
+}
+
+/* Reset 버튼 스타일 */
+.reset-btn {
+    background: #dc3545;
+}
+
+.reset-btn:hover {
+    background: #c82333;
+}
+
+/* 결과 영역 스타일 */
+.result-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+
+}
+
+
+/* 남은 기회 표시 */
+.chance-text {
+    font-size: 16px;
+    color: #007bff;
+    font-weight: bold;
+
+}
+
+/* 입력한 숫자 기록 */
+.history-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+

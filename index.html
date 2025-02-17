@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"> 
+    
+</head>
+<body>
+<div class="game-container">
+    <h1>숫자 맞추기 게임</h1>
+    <p id="random-number" class="random-number">정답: </p>
+    
+  
+    <input type = "number" id="user-input" class="input-box" placeholder="1~100 입력">  
+<div class="button-container>">
+    <button id="play-button" class="game-button">GO!</button>  <!--playButton을 UI만들어줌. 나중에 main.js에 넣을수있음-->
+    <button id="reset-button" class="game-button reset-btn">RESET</button>
+</div>
+    
+    <p div id="result-area" class="result-text">맞춰보슈!</p> 
+    <p div id="chance-area" class="chance-text">남은 기회: 3번</p>
+    <p id="history-area" class="history-text"></p>
+    <p id="history-area" class="history-text"></p> <!-- 입력한 숫자 표시 -->
+
+  
+
+</div>
+    <script src="main.js"></script>
+</body>
+</html>
