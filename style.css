@@ -3,7 +3,7 @@ body {
     background-color: #f8f9fa;
     text-align: center;
     padding: 20px;
-    background-image: url("/randomnumproject/background-image.jpg");    
+    background-image: url("/background-image.jpg");    
     background-repeat: round;
     backdrop-filter: blur(1px);
 
