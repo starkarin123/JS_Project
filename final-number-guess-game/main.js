@@ -57,7 +57,7 @@ function play(){ //위 play함수를 매개변수로 넘김
     }else if(userValue > computerNum){
         resultArea.textContent = "DOWN"
     }else{
-    resultArea.textContent = "올~ 쫌 친다"
+    resultArea.textContent = "올~ 쫌 치는데~"
     gameOver = true
 }
 
@@ -72,7 +72,7 @@ function play(){ //위 play함수를 매개변수로 넘김
 }
 
 function updateHistory() {
-    historyArea.textContent = "📜 입력한 숫자: " + history.join(", ");
+    historyArea.textContent = "입력한 숫자: " + history.join(", ");
 }
 
 function reset(){
@@ -83,9 +83,11 @@ function reset(){
     playButton.disabled = false
     chances = 3; // 기회 초기화
     history = []; // 입력 기록 초기화
+    historyArea.textContent = "";
     gameOver = false; // 게임 상태 초기화
     resultArea.textContent = "맞춰봐 맞춰봐"
     chanceArea.textContent = `남은 기회: ${chances}번`; // 기회 숫자 업데이트
+    
 }
 
 
