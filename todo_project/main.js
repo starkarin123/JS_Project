@@ -25,16 +25,34 @@ for(let i=1;i<tabs.length; i++){
 
 console.log(tabs)
 
-function addTask(){
+function addTask() {
+    let taskContent = taskInput.value.trim(); 
+
+    if (taskContent === "") { 
+        alert("🚨 할 일을 안 적어 주셨어요 ㅠ_ㅠ 🚨"); 
+        return; 
+    }
+
     let task = {
         id: randomIDGenerate(),
-        taskContent: taskInput.value,
+        taskContent: taskContent, 
         isComplete: false
-    }
+    };
+
     taskList.push(task);
-    console.log(taskList);
-    render();
+    taskInput.value = ""; // 입력창 비우기
+
+    updateFilteredList(); 
+    console.log(taskList); 
 }
+
+taskInput.addEventListener("task-input", function(event) {
+    if (event.inputType === "insertLineBreak") {
+        event.preventDefault(); // 줄 바꿈 방지
+        addTask();
+    }
+});
+
 
 function render(){
     let list = []
@@ -93,24 +111,6 @@ function toggleComplete(id){
     console.log(taskList)
 }
 
-function addTask() {
-    let taskContent = taskInput.value.trim(); 
-
-    if (taskContent === "") { 
-        alert("🚨 할 일을 안 적어주셨어요 ㅠ_ㅠ 🚨"); 
-        return; 
-    }
-
-    let task = {
-        id: randomIDGenerate(),
-        taskContent: taskContent,
-        isComplete: false
-    };
-
-    taskList.push(task);
-    taskInput.value = "";
-    updateFilteredList();
-}
 
 function deleteTask(id){
         for (i=0; i<taskList.length;i++){
@@ -181,3 +181,4 @@ taskInput.addEventListener("keydown", function(event) {
         addTask(); // 
     }
 });
+
