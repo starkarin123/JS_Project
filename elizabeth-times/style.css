@@ -7,7 +7,7 @@
 
 
 .header svg{
-    width: 430px;
+    width: 500px;
 
 }
 
@@ -16,41 +16,76 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 5px 0 4px;
+    padding: 5px 0 7px;
     border-top: 1px solid rgb(235, 235, 235);
-    border-bottom: 4px double black;
+    border-bottom: 7px double black;
     
 }
 
 .menus button{
     border: none;
     background: none;
-    margin: 3px;
+    margin: 7px;
 }
 
 .menus button:hover{
     background-color: lightgrey;
 }
 
+.col-lg-4 {
+    display: flex;
+    align-items: stretch;
+}
+
+.col-lg-8 {
+    display: flex;
+    flex-direction: column;
+}
 
 .news-img-size{
     width: 100%;
-    max-width: 100%;
-    max-height: 250px;
+    max-height: 300px;
+    padding-top: 2px;
+    padding-bottom:2px;
 }
 
 .news{
     border-bottom: 2px solid #000000;
+    display: flex;
+    align-items: stretch;
 }
 
-.news-img{
-    width: 100%;
-    height: 250px;
+.search-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(228, 226, 226);
-    color: black;
-    font-weight: bold;
-    text-align: center;
+    justify-content: right;
+    margin: 20px 0;
 }
+
+#search-input {
+    width: 250px;
+    padding: 5px;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+#search-input:focus {
+    border-color: lightgrey;
+}
+
+#search-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+#search-button:hover {
+    background-color: lightgrey;
+    transform: scale(1.1);}
