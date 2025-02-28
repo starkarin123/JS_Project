@@ -34,11 +34,25 @@ const getLatestNews = async() => {
       );
     // const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
 
-    const response = await fetch(url); //await함수를 기다려줘
-    const data = await response.json() //이 파일 형식으로 받아줘
-    newsList = data.articles;
-    render();
-    console.log("ddddd",newsList);
+    try {
+      const response = await fetch(url);
+
+      const data = await response.json();
+      console.log("keyword data", data);
+
+      if (response.status === 200) {
+          if (data.articles.length === 0){
+            throw new Error('No results found. Please try a different search term.')
+          }
+          newsList = data.articles;
+          render();
+      } else {
+          throw new Error(data.message);
+      }
+  } catch (error) {
+      errorRender(error.message);
+      
+  }
 };
 
 const getNewsByCategory = async (event)=>{
@@ -117,6 +131,14 @@ const render = () => {
   }).join('');
 
   document.getElementById('news-board').innerHTML = newsHTML;
+};
+
+const errorRender = (errorMessage) => {
+   const errorHTML = `
+          <div class="alert alert-danger no-result" role="alert">${errorMessage}</div>`
+
+      document.getElementById("news-board").innerHTML = errorHTML
+      
 };
 
 function closeSidebar() {

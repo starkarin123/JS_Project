@@ -114,6 +114,25 @@ cursor: pointer;
     align-items: stretch;
 }
 
+#news-board {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.no-results {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .search-container {
     display: flex;
     justify-content: start;
