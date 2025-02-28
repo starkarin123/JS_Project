@@ -8,6 +8,7 @@
 
 .hamburger {
     display: none;
+    position: absolute; top: 10px; right: 10px;
     background: none;
     border: none;
     font-size: 24px;
@@ -25,6 +26,7 @@ transition: right 0.3s ease-in-out;
 display: flex;
 flex-direction: column;
 padding: 20px;
+z-index: 1000;
 }
 
 .side-menu .close-button {
@@ -101,6 +103,9 @@ cursor: pointer;
     max-height: 300px;
     padding-top: 2px;
     padding-bottom:2px;
+    position: relative;
+    z-index: 1;
+    
 }
 
 .news{
