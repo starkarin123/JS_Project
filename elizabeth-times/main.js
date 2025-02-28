@@ -1,7 +1,12 @@
 const API_KEY = `9193cad76cf04244bb40ccdd80c1ebbb`;
 const PAGE_SIZE = 20;
 let newsList= []
-const menus = document.querySelectorAll('.menus button');
+const menus = document.querySelectorAll('.menus button, .menu-items button');
+menus.forEach(menu => menu.addEventListener("click", (event) => {
+    getNewsByCategory(event);
+    closeSidebar(); 
+}));
+
 menus.forEach(menu => menu.addEventListener("click",(event)=> getNewsByCategory(event)))
 
 document.getElementById("home-logo").addEventListener("click", () => {
@@ -13,7 +18,7 @@ document.getElementById("hamburger-button").addEventListener("click", () => {
 });
 
 document.querySelector(".close-button").addEventListener("click", () => {
-  document.getElementById("side-menu").style.right = "-250px";
+  closeSidebar();
 });
 
 document.getElementById("search-input").addEventListener("keypress", function(event) {
@@ -114,6 +119,9 @@ const render = () => {
   document.getElementById('news-board').innerHTML = newsHTML;
 };
 
+function closeSidebar() {
+  document.getElementById("side-menu").style.right = "-250px";
+}
 
 getLatestNews();
 
