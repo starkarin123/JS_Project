@@ -8,6 +8,14 @@ document.getElementById("home-logo").addEventListener("click", () => {
   fetchNews();
 });
 
+document.getElementById("hamburger-button").addEventListener("click", () => {
+  document.getElementById("side-menu").style.right = "0";
+});
+
+document.querySelector(".close-button").addEventListener("click", () => {
+  document.getElementById("side-menu").style.right = "-250px";
+});
+
 document.getElementById("search-input").addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
       event.preventDefault();
@@ -86,6 +94,7 @@ const render = () => {
 
 
     const source = news.source?.name || "no source";
+  const publishedAt = moment(news.publishedAt).fromNow();  
 
     return `
       <div class="row news">
@@ -96,7 +105,8 @@ const render = () => {
         <div class="col-lg-8">
           <h2>${news.title}</h2>
           <p>${summary}</p>
-          <div class="news-meta">${source} * ${news.publishedAt}</div>
+          <div class="news-meta">${source} * <span class="news-time">${publishedAt}</span></div>
+
         </div> 
       </div>`;
   }).join('');

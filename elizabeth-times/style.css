@@ -2,9 +2,63 @@
     margin-top: 1em;
     display: flex;
     justify-content: center;
+    
 
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;}
+
+.side-menu {
+position: fixed;
+top: 0;
+right: -250px;
+width: 250px;
+height: 100%;
+background-color: white;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+transition: right 0.3s ease-in-out;
+display: flex;
+flex-direction: column;
+padding: 20px;
+}
+
+.side-menu .close-button {
+background: none;
+border: none;
+font-size: 20px;
+align-self: flex-end;
+cursor: pointer;
+}
+
+.side-menu .menu-items button {
+display: block;
+width: 100%;
+text-align: left;
+padding: 10px;
+border: none;
+background: none;
+cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+.menus {
+    display: none;
+}
+.hamburger {
+    display: block;
+}
+}
+
+@media screen and (min-width: 769px) {
+.side-menu {
+    display: none;
+}
+}
 
 .header svg{
     width: 500px;
@@ -57,7 +111,7 @@
 
 .search-container {
     display: flex;
-    justify-content: right;
+    justify-content: start;
     margin: 20px 0;
 }
 
