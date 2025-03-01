@@ -168,3 +168,30 @@ cursor: pointer;
 #search-button:hover {
     background-color: lightgrey;
     transform: scale(1.1);}
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Change to 'flex-end' for right alignment */
+    list-style: none;
+    padding: 10px;
+}
+
+.page-item{
+    margin-right: 5px;
+    margin-left:  5px;
+}
+
+.page-item a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    color: black;
+    background: white;
+    transition: background 0.3s;
+}
+
+.page-item a:hover {
+    background: darkgrey;
+    color: white;
+}
