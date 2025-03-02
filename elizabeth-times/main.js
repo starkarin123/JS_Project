@@ -181,45 +181,68 @@ function closeSidebar() {
 
 const paginationRender = () => {
   const totalPages = Math.ceil(totalResults / PAGE_SIZE);
-  const pageGroup = Math.ceil(page / groupSize);
-  
-  let lastPage = pageGroup * groupSize; 
+  if (totalPages === 0) return;
+
+  let pagesToShow = totalPages <= 5 ? 3 : 5; 
+  const pageGroup = Math.ceil(page / pagesToShow);
+
+  let lastPage = pageGroup * pagesToShow;
   if (lastPage > totalPages) {
-      lastPage = totalPages;
+      lastPage = totalPages; // Ensure last page does not exceed total pages
   }
 
-  const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+  let firstPage = lastPage - (pagesToShow - 1);
+  if (firstPage < 1) firstPage = 1; // Ensure first page is never less than 1
 
-      let paginationHTML = `
-        <li class="page-item ${page === 1 ? "disabled" : ""}">
-            <a class="page-link" href="#" onclick="moveToPage(${page - 1})">Previous</a>
-        </li>`;
+  let paginationHTML = "";
 
-    for (let i = firstPage; i <= lastPage; i++) {
-        let active = i === page ? "active" : "";
-        paginationHTML += `
-        <li class="page-item ${active}">
-            <a class="page-link" href="#" onclick="moveToPage(${i})">${i}</a>
-        </li>`;
-    }
+  // Show "« ‹" only if not on the first page
+  if (page > 1) {
+      paginationHTML += `
+      <li class="page-item">
+        <a class="page-link" href="#" onclick="moveToPage(1)">«</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" onclick="moveToPage(${page - 1})">‹</a>
+      </li>`;
+  }
 
-    paginationHTML += `
-        <li class="page-item ${page === totalPages ? "disabled" : ""}">
-            <a class="page-link" href="#" onclick="moveToPage(${page + 1})">Next</a>
-        </li>`;
+  // Page numbers
+  for (let i = firstPage; i <= lastPage; i++) {
+      let active = i === page ? "active" : "";
+      paginationHTML += `
+      <li class="page-item ${active}">
+        <a class="page-link" href="#" onclick="moveToPage(${i})">${i}</a>
+      </li>`;
+  }
+
+  // Show "› »" only if not on the last page
+  if (page < totalPages) {
+      paginationHTML += `
+      <li class="page-item">
+        <a class="page-link" href="#" onclick="moveToPage(${page + 1})">›</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" onclick="moveToPage(${totalPages})">»</a>
+      </li>`;
+  }
+
   document.querySelector(".pagination").innerHTML = paginationHTML;
 };
 
-const moveToPage = (pageNum) => {
-  if (pageNum < 1 || pageNum > Math.ceil(totalResults / PAGE_SIZE)) return;  // Prevent invalid pages
 
-  page = pageNum;
+const moveToPage = (pageNum) => {
+  const totalPages = Math.ceil(totalResults / PAGE_SIZE);
+  if (pageNum < 1 || pageNum > totalPages) return;
+
+  page = pageNum; // Update current page
+
   let updatedUrl = new URL("https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines");
   updatedUrl.searchParams.set("country", "kr");
   updatedUrl.searchParams.set("page", page);
   updatedUrl.searchParams.set("pageSize", PAGE_SIZE);
 
-  console.log("Updated URL:", updatedUrl.toString());
+  console.log("Fetching page:", pageNum, "Updated URL:", updatedUrl.toString());
 
   fetchNewsData(updatedUrl).then((data) => {
       if (data) {
@@ -229,6 +252,5 @@ const moveToPage = (pageNum) => {
       }
   });
 };
-
 
 getLatestNews();
